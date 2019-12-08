@@ -1,6 +1,14 @@
 const express = require("express");
 
 const router = express.Router();
+const commentRouter = require("./commentRouter");
+
+router.use("/:id/comments", commentRouter);
+
+// Test route
+router.get("/", (req, res) => {
+  res.send("<h2>Hello from the post route</h2>");
+});
 
 // GET Posts
 router.get("/", (req, res) => {});
