@@ -1,6 +1,8 @@
 const express = require("express");
 
-const router = express.Router();
+const router = express.Router({
+  mergeParams: true
+});
 
 // Test route
 router.get("/", (req, res) => {
