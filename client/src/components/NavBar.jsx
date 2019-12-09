@@ -11,8 +11,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import AddBox from "@material-ui/icons/AddBox";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Link } from "react-router-dom";
 
@@ -140,7 +139,7 @@ const NavBar = () => {
       <MenuItem>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge color="secondary">
-            <MailIcon />
+            <AddBox />
           </Badge>
         </IconButton>
         <Link to="/addpost">Add Post</Link>
@@ -180,14 +179,11 @@ const NavBar = () => {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
+            <IconButton aria-label="add new post" color="inherit">
+              <Badge color="secondary">
+                <Link to="/addpost" className={classes.link}>
+                  <AddBox />
+                </Link>
               </Badge>
             </IconButton>
             <IconButton
@@ -198,7 +194,9 @@ const NavBar = () => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Link to="/addpost" className={classes.link}>
+                <AccountCircle />
+              </Link>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

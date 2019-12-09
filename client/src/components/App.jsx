@@ -25,6 +25,7 @@ function App() {
 
 export default App;
 
-export const StyledContainer = styled(Container)`
+const StyledContainer = styled(Container)`
   text-align: center;
+  margin: "2rem auto";
 `;
