@@ -11,11 +11,6 @@ const EditPost = props => {
     axios
       .get(`http://127.0.0.1:5000/api/posts/${id}`)
       .then(res => {
-        console.log(res.data[0]);
-
-        console.log(res.data[0].title);
-        console.log(res.data[0].contents);
-
         setTitle(res.data[0].title);
         setContents(res.data[0].contents);
       })
