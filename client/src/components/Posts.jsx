@@ -6,6 +6,19 @@ import Post from "./Post";
 const Posts = () => {
   const [posts, setPosts] = useState([]);
 
+  const handleDelete = id => {
+    console.log(id);
+    axios
+      .delete(`http://127.0.0.1:5000/api/posts/${id}`)
+      .then(res => {
+        const updatedPosts = posts.filter(post => post.id !== id);
+        setPosts(updatedPosts);
+      })
+      .catch(err => {
+        console.log(err.response);
+      });
+  };
+
   useEffect(() => {
     axios
       .get("http://127.0.0.1:5000/api/posts/")
@@ -18,7 +31,7 @@ const Posts = () => {
       <Typography variant="h2">Blog Posts</Typography>
       {posts.map(post => (
         <Grid key={post.id} item>
-          <Post post={post} />
+          <Post post={post} handleDelete={handleDelete} />
         </Grid>
       ))}
     </Grid>

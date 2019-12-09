@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
+import { Button } from "@material-ui/core";
+import axios from "axios";
 
 const useStyles = makeStyles({
   card: {
@@ -14,7 +16,7 @@ const useStyles = makeStyles({
   }
 });
 
-const Post = ({ post }) => {
+const Post = ({ post, handleDelete }) => {
   const classes = useStyles();
 
   return (
@@ -31,6 +33,7 @@ const Post = ({ post }) => {
           {post.contents}
         </Typography>
       </CardContent>
+      <Button onClick={() => handleDelete(post.id)}>Delete Post</Button>
     </Card>
   );
 };
