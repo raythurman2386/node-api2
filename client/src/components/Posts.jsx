@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Grid } from "@material-ui/core";
 import axios from "axios";
 import Post from "./Post";
 
@@ -13,11 +14,13 @@ const Posts = () => {
   }, []);
 
   return (
-    <div>
+    <Grid container justify="center" spacing={2}>
       {posts.map(post => (
-        <Post key={post.id} post={post} />
+        <Grid key={post.id} item>
+          <Post post={post} />
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 
