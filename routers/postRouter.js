@@ -54,11 +54,11 @@ router.post("/", (req, res) => {
     .then(post => {
       db.findById(post.id).then(i => res.status(201).json(i));
     })
-    .catch(err =>
+    .catch(err => {
       res
         .status(500)
-        .json({ error: "There was an error while saving the post." })
-    );
+        .json({ error: "There was an error while saving the post." });
+    });
 });
 
 // DELETE Posts
