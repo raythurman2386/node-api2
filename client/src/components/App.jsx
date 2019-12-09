@@ -7,6 +7,7 @@ import styled from "styled-components";
 import NavBar from "./NavBar";
 import Posts from "./Posts";
 import AddPost from "./AddPost";
+import EditPost from "./EditPost";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/" component={Posts} />
           <Route exact path="/addpost" component={AddPost} />
+          <Route exact path="/editpost/:id" component={EditPost} />
         </Switch>
       </StyledContainer>
     </>
