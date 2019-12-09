@@ -30,6 +30,39 @@ router.get("/", (req, res) => {
 });
 
 // POST Comment
-router.post("/:id/comments", (req, res) => {});
+router.post("/", (req, res) => {
+  const comment = {
+    post_id: req.params.id,
+    text: req.body.text
+  };
+
+  if (!req.body.text) {
+    return res
+      .status(400)
+      .json({ errorMessage: "Please provide text for the comment." });
+  }
+
+  db.insertComment(comment)
+    .then(postComment => {
+      db.findCommentById(postComment.id)
+        .then(comment => {
+          res.status(201).json(comment);
+        })
+        .catch(err => {
+          res
+            .status(404)
+            .json({
+              errorMessage:
+                "There was an error while saving the comment to the database"
+            });
+        });
+    })
+    .catch(err => {
+      res.status(500).json({
+        errorMessage:
+          "There was an error while saving the comment to the database"
+      });
+    });
+});
 
 module.exports = router;
