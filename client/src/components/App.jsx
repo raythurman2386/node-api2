@@ -1,5 +1,5 @@
 import React from "react";
-import { CssBaseline, Typography, Container } from "@material-ui/core";
+import { CssBaseline, Container } from "@material-ui/core";
 import styled from "styled-components";
 
 // Components
@@ -11,7 +11,7 @@ function App() {
     <>
       <CssBaseline />
       <NavBar />
-      <StyledContainer maxWidth="sm">
+      <StyledContainer maxWidth="md">
         <Posts />
       </StyledContainer>
     </>

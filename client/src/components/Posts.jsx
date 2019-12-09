@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Post from "./Post";
 
 const Posts = () => {
   const [posts, setPosts] = useState([]);
@@ -14,10 +15,7 @@ const Posts = () => {
   return (
     <div>
       {posts.map(post => (
-        <>
-          <h1>{post.title}</h1>
-          <p>{post.contents}</p>
-        </>
+        <Post key={post.id} post={post} />
       ))}
     </div>
   );
