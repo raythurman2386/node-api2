@@ -1,13 +1,25 @@
 import React from "react";
-import { CssBaseline, Typography } from "@material-ui/core";
+import { CssBaseline, Typography, Container } from "@material-ui/core";
+import styled from "styled-components";
+
+// Components
+import NavBar from "./NavBar";
+import Posts from "./Posts";
 
 function App() {
   return (
     <>
       <CssBaseline />
-      <Typography variant="h1">Welcome to the React Wizard Template</Typography>
+      <NavBar />
+      <StyledContainer maxWidth="sm">
+        <Posts />
+      </StyledContainer>
     </>
   );
 }
 
 export default App;
+
+export const StyledContainer = styled(Container)`
+  text-align: center;
+`;
