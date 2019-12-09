@@ -43,7 +43,23 @@ router.get("/:id", (req, res) => {
 });
 
 // POST Posts
-router.post("/", (req, res) => {});
+router.post("/", (req, res) => {
+  if (!req.body.title || !req.body.contents) {
+    return res.status(400).json({
+      errorMessage: "Please provide title and contents for the post."
+    });
+  }
+
+  db.insert(req.body)
+    .then(post => {
+      db.findById(post.id).then(i => res.status(201).json(i));
+    })
+    .catch(err =>
+      res
+        .status(500)
+        .json({ error: "There was an error while saving the post." })
+    );
+});
 
 // DELETE Posts
 router.delete("/:id", (req, res) => {});
