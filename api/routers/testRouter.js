@@ -3,12 +3,11 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    const shoutouts = await db("shoutouts");
     const messageOfTheDay = process.env.MOTD || "Hello World!"; // add this line
-    res.status(200).json({ motd: messageOfTheDay, shoutouts }); // change this line
+    res.status(200).json({ motd: messageOfTheDay }); // change this line
   } catch (error) {
     console.error("\nERROR", error);
-    res.status(500).json({ error: "Cannot retrieve the shoutouts" });
+    res.status(500).json({ error: "Cannot retrieve the data" });
   }
 });
 
